@@ -1,0 +1,48 @@
+buildscript {
+    repositories {
+        maven { url = 'https://maven.aliyun.com/repository/public' }
+        mavenCentral()
+    }
+}
+
+plugins {
+    id 'org.jetbrains.kotlin.jvm' version '1.8.20'
+    id 'application'
+}
+
+group = 'top.kmar.sprite'
+version = '1.0-SNAPSHOT'
+
+repositories {
+    maven { url = 'https://maven.aliyun.com/repository/public' }
+    mavenCentral()
+}
+
+dependencies {
+    implementation group: 'org.yaml', name: 'snakeyaml', version: '2.0'
+    implementation group: 'com.twelvemonkeys.imageio', name: 'imageio-webp', version: '3.9.4'
+}
+
+kotlin {
+    jvmToolchain(8)
+    sourceSets.configureEach {
+        languageSettings {
+            languageVersion = "2.0"
+        }
+    }
+}
+
+compileKotlin {
+    compilerOptions {
+        freeCompilerArgs.addAll(
+                "-Xjvm-default=all",     // 接口 default 方法
+                "-Xlambdas=indy",               // indy
+                "-Xassertions=always-disable",  // 禁用断言
+                "-Xsam-conversions=indy"
+        )
+    }
+}
+
+application {
+    mainClassName = 'MainKt'
+}
