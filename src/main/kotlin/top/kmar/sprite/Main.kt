@@ -26,7 +26,7 @@ typealias YamlList = List<Map<String, Any>>
 fun main(args: Array<String>) {
     var ymlPath = "./source/_data/link.yml"
     var outputPath = "./sprites/avatar"
-    var localPath = "./source/_data/avatar/"
+    var localPath = "./.sprite_data/"
     var size = 120
     var retryTimes = 2
     var limit = 0
